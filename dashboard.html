@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FlowFund Dashboard</title>
+<title>FlowFund AI Dashboard</title>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -38,15 +38,16 @@ nav {
     color: white;
 }
 
-nav a {
+nav a, nav span {
     color: white;
-    text-decoration: none;
     margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 /* SECTION */
 .section {
-    padding: 50px 20px;
+    padding: 40px;
     max-width: 1100px;
     margin: auto;
 }
@@ -63,14 +64,14 @@ nav a {
     background: var(--card);
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
 /* INPUTS */
 input {
     padding: 10px;
     margin: 5px;
-    width: 200px;
+    width: 180px;
 }
 
 /* BUTTON */
@@ -80,11 +81,33 @@ button {
     border-radius: 6px;
     background: var(--accent);
     cursor: pointer;
+    margin: 5px;
 }
 
 /* SLIDER */
 .slider {
     width: 100%;
+}
+
+/* NOTIFICATIONS */
+#notifications {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.notification {
+    background: var(--primary);
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    animation: fadein 0.5s;
+}
+
+@keyframes fadein {
+    from {opacity: 0; transform: translateY(-10px);}
+    to {opacity: 1;}
 }
 </style>
 </head>
@@ -99,6 +122,8 @@ button {
 </div>
 </nav>
 
+<div id="notifications"></div>
+
 <div class="section">
 
 <h2 id="welcome">Your AI Financial Control Center</h2>
@@ -106,11 +131,11 @@ button {
 <input id="nameInput" placeholder="Enter your name">
 <button onclick="setName()">Save</button>
 
-<h3>Adjust Your Financial Profile</h3>
+<h3>Financial Inputs</h3>
 
 <input type="number" id="income" placeholder="Monthly Income">
 <input type="number" id="expenses" placeholder="Monthly Expenses">
-<input type="number" id="invest" placeholder="Monthly Investing">
+<input type="number" id="invest" placeholder="Investing">
 <input type="number" id="networth" placeholder="Net Worth">
 
 <h3>Income Scenario Slider</h3>
@@ -118,6 +143,7 @@ button {
 <p id="sliderValue">$3000</p>
 
 <button onclick="runDashboard()">Run AI Analysis</button>
+<button onclick="resetDashboard()">Back to Dashboard</button>
 
 <div class="grid">
 
@@ -127,13 +153,13 @@ button {
 </div>
 
 <div class="card">
-<h3>12-Month Net Worth Projection</h3>
+<h3>12-Month Projection</h3>
 <canvas id="projectionChart"></canvas>
 </div>
 
 <div class="card">
 <h3>AI Insights</h3>
-<p id="insights">Enter your data to see insights.</p>
+<p id="insights">Enter data to generate insights.</p>
 </div>
 
 <div class="card">
@@ -153,10 +179,11 @@ function toggleDark(){
 document.body.classList.toggle("dark");
 }
 
-// NAME PERSONALIZATION
+// NAME
 function setName(){
 let name = document.getElementById("nameInput").value;
 document.getElementById("welcome").innerText = "Welcome, " + name;
+addNotification("👋 Welcome " + name + "!");
 }
 
 // SLIDER
@@ -164,6 +191,16 @@ function updateSlider(){
 let val = document.getElementById("slider").value;
 document.getElementById("sliderValue").innerText = "$" + val;
 document.getElementById("income").value = val;
+}
+
+// NOTIFICATIONS
+function addNotification(text){
+let div = document.createElement("div");
+div.className = "notification";
+div.innerText = text;
+document.getElementById("notifications").appendChild(div);
+
+setTimeout(()=>div.remove(), 4000);
 }
 
 // MAIN ENGINE
@@ -191,26 +228,28 @@ datasets:[{data:[expenses, savings>0?savings:0, invest]}]
 let insights=[];
 
 if(expenses > income*0.7){
-insights.push("⚠️ Your spending is too high relative to income.");
+insights.push("⚠️ Spending too high.");
+addNotification("⚠️ AI Alert: High spending detected");
 }
 if(savings < income*0.2){
-insights.push("📉 Your savings rate is below 20%.");
+insights.push("📉 Savings too low.");
 }
 if(invest < income*0.1){
-insights.push("📈 Increase investing for long-term growth.");
+insights.push("📈 Increase investing.");
 }
 if(networth < income*6){
-insights.push("💡 Your net worth is low relative to income.");
+insights.push("💡 Build assets.");
 }
+
 if(insights.length===0){
-insights.push("✅ Your finances are in excellent shape.");
+insights.push("✅ Strong financial health.");
+addNotification("✅ AI: You're doing great!");
 }
 
 document.getElementById("insights").innerText = insights.join(" ");
 
 // SCORE
 let score = 100;
-
 if(expenses > income*0.7) score -= 25;
 if(savings < income*0.2) score -= 25;
 if(invest < income*0.1) score -= 25;
@@ -219,9 +258,7 @@ if(networth < income*6) score -= 25;
 document.getElementById("score").innerText = score + "/100";
 
 // PROJECTIONS
-let months=[];
-let values=[];
-let current=networth;
+let months=[], values=[], current=networth;
 
 for(let i=1;i<=12;i++){
 current += savings;
@@ -235,12 +272,23 @@ projectionChart = new Chart(document.getElementById("projectionChart"),{
 type:"line",
 data:{
 labels:months,
-datasets:[{
-label:"Projected Net Worth",
-data:values
-}]
+datasets:[{label:"Net Worth Projection", data:values}]
 }
 });
+
+// RANDOM NOTIFICATIONS
+setTimeout(()=>addNotification("💡 AI Tip: Try increasing savings by 5%"),2000);
+}
+
+// RESET BUTTON
+function resetDashboard(){
+document.getElementById("income").value="";
+document.getElementById("expenses").value="";
+document.getElementById("invest").value="";
+document.getElementById("networth").value="";
+document.getElementById("insights").innerText="Dashboard reset.";
+document.getElementById("score").innerText="--";
+addNotification("🔄 Dashboard reset");
 }
 </script>
 
