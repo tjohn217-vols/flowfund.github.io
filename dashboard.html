@@ -8,104 +8,240 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
+:root {
+    --bg: #f8fafc;
+    --text: #0f172a;
+    --card: #ffffff;
+    --primary: #0a2540;
+    --accent: #00d4ff;
+}
+
+body.dark {
+    --bg: #0f172a;
+    --text: #e2e8f0;
+    --card: #1e293b;
+}
+
 body {
-    font-family: Arial;
     margin: 0;
-    background: #0f172a;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* NAV */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: var(--primary);
     color: white;
 }
 
-header {
-    background: #020617;
-    padding: 20px;
-    text-align: center;
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
 }
 
-section {
-    padding: 30px;
-    max-width: 900px;
+/* SECTION */
+.section {
+    padding: 50px 20px;
+    max-width: 1100px;
     margin: auto;
 }
 
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* CARD */
 .card {
-    background: #1e293b;
+    background: var(--card);
     padding: 20px;
     border-radius: 12px;
-    margin: 15px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
+/* INPUTS */
 input {
     padding: 10px;
-    margin: 10px;
+    margin: 5px;
+    width: 200px;
 }
 
+/* BUTTON */
 button {
-    padding: 10px 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    background: var(--accent);
     cursor: pointer;
 }
 
-canvas {
-    max-width: 400px;
+/* SLIDER */
+.slider {
+    width: 100%;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1 id="welcome">Welcome</h1>
-    <p>Your AI Financial Dashboard</p>
-</header>
+<nav>
+<h2>FlowFund Dashboard</h2>
+<div>
+<a href="index.html">Home</a>
+<span onclick="toggleDark()">🌙</span>
+</div>
+</nav>
 
-<section>
+<div class="section">
+
+<h2 id="welcome">Your AI Financial Control Center</h2>
+
+<input id="nameInput" placeholder="Enter your name">
+<button onclick="setName()">Save</button>
+
+<h3>Adjust Your Financial Profile</h3>
+
+<input type="number" id="income" placeholder="Monthly Income">
+<input type="number" id="expenses" placeholder="Monthly Expenses">
+<input type="number" id="invest" placeholder="Monthly Investing">
+<input type="number" id="networth" placeholder="Net Worth">
+
+<h3>Income Scenario Slider</h3>
+<input type="range" min="0" max="10000" value="3000" class="slider" id="slider" oninput="updateSlider()">
+<p id="sliderValue">$3000</p>
+
+<button onclick="runDashboard()">Run AI Analysis</button>
+
+<div class="grid">
 
 <div class="card">
-    <h3>Enter Your Name</h3>
-    <input id="nameInput" placeholder="Your name">
-    <button onclick="setName()">Save</button>
+<h3>Financial Breakdown</h3>
+<canvas id="mainChart"></canvas>
 </div>
 
 <div class="card">
-    <h3>Net Worth</h3>
-    <p>$52,400</p>
+<h3>12-Month Net Worth Projection</h3>
+<canvas id="projectionChart"></canvas>
 </div>
 
 <div class="card">
-    <h3>Monthly Breakdown</h3>
-    <canvas id="chart"></canvas>
+<h3>AI Insights</h3>
+<p id="insights">Enter your data to see insights.</p>
 </div>
 
 <div class="card">
-    <h3>AI Recommendation</h3>
-    <p id="aiText">Analyzing your finances...</p>
+<h3>Financial Health Score</h3>
+<p id="score">--</p>
 </div>
 
-<button onclick="window.location.href='index.html'">← Back</button>
+</div>
 
-</section>
+</div>
 
 <script>
-let chart;
+let mainChart, projectionChart;
 
-function setName() {
-    let name = document.getElementById("nameInput").value;
-    document.getElementById("welcome").innerText = "Welcome, " + name;
+// DARK MODE
+function toggleDark(){
+document.body.classList.toggle("dark");
 }
 
-let ctx = document.getElementById('chart');
+// NAME PERSONALIZATION
+function setName(){
+let name = document.getElementById("nameInput").value;
+document.getElementById("welcome").innerText = "Welcome, " + name;
+}
 
-chart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Spending', 'Savings', 'Investing'],
-        datasets: [{
-            data: [1200, 800, 600]
-        }]
-    }
+// SLIDER
+function updateSlider(){
+let val = document.getElementById("slider").value;
+document.getElementById("sliderValue").innerText = "$" + val;
+document.getElementById("income").value = val;
+}
+
+// MAIN ENGINE
+function runDashboard(){
+
+let income = parseFloat(document.getElementById("income").value)||0;
+let expenses = parseFloat(document.getElementById("expenses").value)||0;
+let invest = parseFloat(document.getElementById("invest").value)||0;
+let networth = parseFloat(document.getElementById("networth").value)||0;
+
+let savings = income - expenses - invest;
+
+// CHART
+if(mainChart) mainChart.destroy();
+
+mainChart = new Chart(document.getElementById("mainChart"),{
+type:"doughnut",
+data:{
+labels:["Expenses","Savings","Investing"],
+datasets:[{data:[expenses, savings>0?savings:0, invest]}]
+}
 });
 
-document.getElementById("aiText").innerText =
-    "Based on your profile, increase savings by 10% and reduce discretionary spending.";
+// AI INSIGHTS
+let insights=[];
+
+if(expenses > income*0.7){
+insights.push("⚠️ Your spending is too high relative to income.");
+}
+if(savings < income*0.2){
+insights.push("📉 Your savings rate is below 20%.");
+}
+if(invest < income*0.1){
+insights.push("📈 Increase investing for long-term growth.");
+}
+if(networth < income*6){
+insights.push("💡 Your net worth is low relative to income.");
+}
+if(insights.length===0){
+insights.push("✅ Your finances are in excellent shape.");
+}
+
+document.getElementById("insights").innerText = insights.join(" ");
+
+// SCORE
+let score = 100;
+
+if(expenses > income*0.7) score -= 25;
+if(savings < income*0.2) score -= 25;
+if(invest < income*0.1) score -= 25;
+if(networth < income*6) score -= 25;
+
+document.getElementById("score").innerText = score + "/100";
+
+// PROJECTIONS
+let months=[];
+let values=[];
+let current=networth;
+
+for(let i=1;i<=12;i++){
+current += savings;
+months.push("Month " + i);
+values.push(current);
+}
+
+if(projectionChart) projectionChart.destroy();
+
+projectionChart = new Chart(document.getElementById("projectionChart"),{
+type:"line",
+data:{
+labels:months,
+datasets:[{
+label:"Projected Net Worth",
+data:values
+}]
+}
+});
+}
 </script>
 
 </body>
