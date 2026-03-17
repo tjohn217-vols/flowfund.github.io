@@ -1,182 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlowFund - Financial Autopilot</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlowFund</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f5f7fa;
-            color: #333;
-        }
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        header {
-            background: #0a2540;
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
+<style>
+:root {
+    --bg: #f5f7fa;
+    --text: #333;
+    --card: #ffffff;
+    --primary: #0a2540;
+}
 
-        header h1 {
-            font-size: 48px;
-            margin: 0;
-        }
+body.dark {
+    --bg: #0f172a;
+    --text: #e5e7eb;
+    --card: #1e293b;
+}
 
-        header p {
-            font-size: 20px;
-            margin-top: 10px;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
 
-        section {
-            padding: 50px 20px;
-            max-width: 900px;
-            margin: auto;
-        }
+/* HEADER */
+header {
+    background: var(--primary);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in;
+}
 
-        h2 {
-            color: #0a2540;
-        }
+.logo {
+    font-size: 42px;
+    font-weight: bold;
+}
 
-        .features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
+.logo span {
+    color: #00d4ff;
+}
 
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+button {
+    padding: 12px 20px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
 
-        .demo {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-        }
+button:hover {
+    transform: scale(1.05);
+}
 
-        input {
-            padding: 10px;
-            margin: 10px;
-            width: 150px;
-        }
+.cta {
+    background: #00d4ff;
+    color: black;
+    font-weight: bold;
+}
 
-        button {
-            padding: 10px 20px;
-            background: #0a2540;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+/* DARK MODE */
+.toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: black;
+    color: white;
+}
 
-        footer {
-            background: #0a2540;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-    </style>
+/* SECTIONS */
+section {
+    padding: 50px 20px;
+    max-width: 1000px;
+    margin: auto;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    color: var(--primary);
+}
+
+/* CARDS */
+.features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* DEMO */
+.demo {
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    margin: 10px;
+}
+
+/* CHART */
+canvas {
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+/* FOOTER */
+footer {
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+</style>
 </head>
 
 <body>
 
+<button class="toggle" onclick="toggleDark()">🌙</button>
+
 <header>
-    <h1>FlowFund</h1>
+    <div class="logo">Flow<span>Fund</span></div>
     <p>Your Financial Autopilot</p>
+    <button class="cta">Get Started</button>
 </header>
 
 <section>
-    <h2>About FlowFund</h2>
-    <p>
-        FlowFund is an AI-powered financial platform that automatically adjusts your
-        spending, saving, and investing based on life changes like new jobs,
-        rent increases, or financial goals.
-    </p>
+    <h2>About</h2>
+    <p>FlowFund automatically adapts your finances based on life changes.</p>
 </section>
 
 <section>
-    <h2>How It Works</h2>
-    <ol>
-        <li>Connect your financial accounts</li>
-        <li>Set your goals</li>
-        <li>FlowFund dynamically adjusts your finances in real time</li>
-    </ol>
-</section>
-
-<section>
-    <h2>Key Features</h2>
-
+    <h2>Features</h2>
     <div class="features">
-        <div class="card">
-            <h3>Dynamic Budgeting</h3>
-            <p>Automatically updates your budget as your income and expenses change.</p>
-        </div>
-
-        <div class="card">
-            <h3>Life Event AI</h3>
-            <p>Adapts your financial plan instantly when major life events occur.</p>
-        </div>
-
-        <div class="card">
-            <h3>Goal-Based Investing</h3>
-            <p>Invests your money based on goals like buying a house or retirement.</p>
-        </div>
-
-        <div class="card">
-            <h3>Financial Simulation</h3>
-            <p>Test scenarios like moving cities or changing jobs.</p>
-        </div>
+        <div class="card"><h3>Dynamic Budgeting</h3></div>
+        <div class="card"><h3>Life Event AI</h3></div>
+        <div class="card"><h3>Goal Investing</h3></div>
+        <div class="card"><h3>Simulation Engine</h3></div>
     </div>
 </section>
 
 <section>
-    <h2>Demo: Financial Planner</h2>
+    <h2>Interactive Demo</h2>
 
     <div class="demo">
-        <p>Enter your monthly income and expenses to see your savings:</p>
+        <input type="number" id="income" placeholder="Income">
+        <input type="number" id="expenses" placeholder="Expenses"><br>
 
-        <input type="number" id="income" placeholder="Income ($)">
-        <input type="number" id="expenses" placeholder="Expenses ($)">
-        <br>
-        <button onclick="calculateSavings()">Calculate</button>
+        <button onclick="updateChart()">Analyze</button>
 
         <h3 id="result"></h3>
+
+        <canvas id="chart"></canvas>
     </div>
 </section>
 
 <section>
-    <h2>Example Scenario</h2>
-    <p>
-        Sarah gets a promotion and moves to a new city. FlowFund automatically adjusts
-        her rent budget, increases her savings rate, and reallocates her investments.
-    </p>
+    <h2>Scenario</h2>
+    <p>New job? FlowFund reallocates your finances instantly.</p>
 </section>
 
 <footer>
-    <p>© 2026 FlowFund | FinTech Startup Concept</p>
+    <p>© 2026 FlowFund</p>
 </footer>
 
 <script>
-function calculateSavings() {
-    let income = document.getElementById("income").value;
-    let expenses = document.getElementById("expenses").value;
+let chart;
 
+function updateChart() {
+    let income = parseFloat(document.getElementById("income").value);
+    let expenses = parseFloat(document.getElementById("expenses").value);
     let savings = income - expenses;
 
-    if (savings > 0) {
-        document.getElementById("result").innerText =
-            "You save $" + savings + " per month.";
-    } else {
-        document.getElementById("result").innerText =
-            "You're overspending by $" + Math.abs(savings);
-    }
+    document.getElementById("result").innerText =
+        savings >= 0 ? "Saving $" + savings : "Overspending $" + Math.abs(savings);
+
+    let data = [expenses, savings > 0 ? savings : 0];
+
+    if (chart) chart.destroy();
+
+    let ctx = document.getElementById('chart').getContext('2d');
+
+    chart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Expenses', 'Savings'],
+            datasets: [{
+                data: data
+            }]
+        }
+    });
 }
+
+/* DARK MODE */
+function toggleDark() {
+    document.body.classList.toggle("dark");
+}
+
+/* SCROLL ANIMATION */
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+            sec.classList.add("show");
+        }
+    });
+});
 </script>
 
 </body>
