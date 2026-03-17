@@ -34,14 +34,18 @@ section {
     margin: 15px 0;
 }
 
-canvas {
-    max-width: 400px;
+input {
+    padding: 10px;
+    margin: 10px;
 }
 
 button {
     padding: 10px 20px;
-    margin-top: 10px;
     cursor: pointer;
+}
+
+canvas {
+    max-width: 400px;
 }
 </style>
 </head>
@@ -49,33 +53,48 @@ button {
 <body>
 
 <header>
-    <h1>FlowFund Dashboard</h1>
-    <p>AI Financial Overview</p>
+    <h1 id="welcome">Welcome</h1>
+    <p>Your AI Financial Dashboard</p>
 </header>
 
 <section>
-    <div class="card">
-        <h3>Net Worth</h3>
-        <p>$52,400</p>
-    </div>
 
-    <div class="card">
-        <h3>Monthly Breakdown</h3>
-        <canvas id="chart"></canvas>
-    </div>
+<div class="card">
+    <h3>Enter Your Name</h3>
+    <input id="nameInput" placeholder="Your name">
+    <button onclick="setName()">Save</button>
+</div>
 
-    <div class="card">
-        <h3>AI Recommendation</h3>
-        <p>Increase savings by 8% due to recent income increase.</p>
-    </div>
+<div class="card">
+    <h3>Net Worth</h3>
+    <p>$52,400</p>
+</div>
 
-    <button onclick="window.location.href='index.html'">← Back to Home</button>
+<div class="card">
+    <h3>Monthly Breakdown</h3>
+    <canvas id="chart"></canvas>
+</div>
+
+<div class="card">
+    <h3>AI Recommendation</h3>
+    <p id="aiText">Analyzing your finances...</p>
+</div>
+
+<button onclick="window.location.href='index.html'">← Back</button>
+
 </section>
 
 <script>
+let chart;
+
+function setName() {
+    let name = document.getElementById("nameInput").value;
+    document.getElementById("welcome").innerText = "Welcome, " + name;
+}
+
 let ctx = document.getElementById('chart');
 
-new Chart(ctx, {
+chart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: ['Spending', 'Savings', 'Investing'],
@@ -84,6 +103,9 @@ new Chart(ctx, {
         }]
     }
 });
+
+document.getElementById("aiText").innerText =
+    "Based on your profile, increase savings by 10% and reduce discretionary spending.";
 </script>
 
 </body>
