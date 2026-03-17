@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlowFund Dashboard</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #0f172a;
+    color: white;
+}
+
+header {
+    background: #020617;
+    padding: 20px;
+    text-align: center;
+}
+
+section {
+    padding: 30px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 15px 0;
+}
+
+canvas {
+    max-width: 400px;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>FlowFund Dashboard</h1>
+    <p>AI Financial Overview</p>
+</header>
+
+<section>
+    <div class="card">
+        <h3>Net Worth</h3>
+        <p>$52,400</p>
+    </div>
+
+    <div class="card">
+        <h3>Monthly Breakdown</h3>
+        <canvas id="chart"></canvas>
+    </div>
+
+    <div class="card">
+        <h3>AI Recommendation</h3>
+        <p>Increase savings by 8% due to recent income increase.</p>
+    </div>
+
+    <button onclick="window.location.href='index.html'">← Back to Home</button>
+</section>
+
+<script>
+let ctx = document.getElementById('chart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Spending', 'Savings', 'Investing'],
+        datasets: [{
+            data: [1200, 800, 600]
+        }]
+    }
+});
+</script>
+
+</body>
+</html>
