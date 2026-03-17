@@ -28,6 +28,19 @@ body {
     color: var(--text);
 }
 
+/* NAVBAR */
+nav {
+    padding: 15px;
+    background: var(--primary);
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+}
+
 /* HEADER */
 header {
     background: var(--primary);
@@ -46,6 +59,7 @@ header {
     color: #00d4ff;
 }
 
+/* BUTTONS */
 button {
     padding: 12px 20px;
     margin-top: 15px;
@@ -123,6 +137,13 @@ canvas {
     margin: 20px auto;
 }
 
+/* DIAGRAM */
+.flow {
+    display: flex;
+    justify-content: space-around;
+    font-size: 18px;
+}
+
 /* FOOTER */
 footer {
     background: var(--primary);
@@ -143,15 +164,46 @@ footer {
 
 <button class="toggle" onclick="toggleDark()">🌙</button>
 
+<nav>
+    <a href="index.html">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+</nav>
+
 <header>
     <div class="logo">Flow<span>Fund</span></div>
     <p>Your Financial Autopilot</p>
-    <button class="cta">Get Started</button>
+
+    <button class="cta" onclick="window.location.href='dashboard.html'">
+        View Demo Dashboard
+    </button>
 </header>
 
 <section>
-    <h2>About</h2>
-    <p>FlowFund automatically adapts your finances based on life changes.</p>
+    <h2>About FlowFund</h2>
+    <p>
+        FlowFund is an AI-powered platform that automatically adjusts your finances in real time.
+        Instead of static budgets, your money evolves with your life—whether you change jobs,
+        move cities, or set new goals.
+    </p>
+</section>
+
+<section>
+    <h2>How It Works</h2>
+
+    <div class="card">
+        <h3>1. Connect Accounts</h3>
+        <p>Securely link your bank and financial data.</p>
+    </div>
+
+    <div class="card">
+        <h3>2. AI Analysis</h3>
+        <p>FlowFund analyzes your income, spending, and risk.</p>
+    </div>
+
+    <div class="card">
+        <h3>3. Automatic Optimization</h3>
+        <p>Your finances update automatically as your life changes.</p>
+    </div>
 </section>
 
 <section>
@@ -161,6 +213,21 @@ footer {
         <div class="card"><h3>Life Event AI</h3></div>
         <div class="card"><h3>Goal Investing</h3></div>
         <div class="card"><h3>Simulation Engine</h3></div>
+    </div>
+</section>
+
+<section>
+    <h2>Financial Flow Diagram</h2>
+    <div class="card">
+        <div class="flow">
+            <div>💰 Income</div>
+            <div>➡️</div>
+            <div>📊 Budget</div>
+            <div>➡️</div>
+            <div>📈 Invest</div>
+            <div>➡️</div>
+            <div>🚀 Growth</div>
+        </div>
     </div>
 </section>
 
@@ -180,8 +247,25 @@ footer {
 </section>
 
 <section>
+    <h2>App Preview</h2>
+
+    <div class="card">
+        <p><strong>Budget Dashboard</strong></p>
+        <div style="background:#ddd; height:150px; border-radius:10px;"></div>
+    </div>
+
+    <div class="card">
+        <p><strong>AI Insights Panel</strong></p>
+        <div style="background:#ccc; height:150px; border-radius:10px;"></div>
+    </div>
+</section>
+
+<section>
     <h2>Scenario</h2>
-    <p>New job? FlowFund reallocates your finances instantly.</p>
+    <p>
+        You get a new job → FlowFund increases savings, adjusts taxes,
+        and reallocates investments instantly.
+    </p>
 </section>
 
 <footer>
@@ -216,12 +300,10 @@ function updateChart() {
     });
 }
 
-/* DARK MODE */
 function toggleDark() {
     document.body.classList.toggle("dark");
 }
 
-/* SCROLL ANIMATION */
 const sections = document.querySelectorAll("section");
 
 window.addEventListener("scroll", () => {
