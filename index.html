@@ -3,21 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FlowFund</title>
+<title>FlowFund | Financial Autopilot</title>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
 :root {
-    --bg: #f5f7fa;
-    --text: #333;
+    --bg: #f8fafc;
+    --text: #0f172a;
     --card: #ffffff;
     --primary: #0a2540;
+    --accent: #00d4ff;
 }
 
 body.dark {
     --bg: #0f172a;
-    --text: #e5e7eb;
+    --text: #e2e8f0;
     --card: #1e293b;
 }
 
@@ -30,172 +31,230 @@ body {
 
 /* NAV */
 nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
     background: var(--primary);
-    padding: 15px;
-    text-align: center;
+    color: white;
 }
 
-nav a {
-    color: white;
-    margin: 10px;
+nav h1 {
+    margin: 0;
+}
+
+nav div span {
+    margin-left: 20px;
     cursor: pointer;
 }
 
-/* HEADER */
-header {
-    background: var(--primary);
-    color: white;
-    padding: 60px;
+/* HERO */
+.hero {
     text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #0a2540, #1e3a8a);
+    color: white;
 }
 
-/* BUTTONS */
+.hero h1 {
+    font-size: 48px;
+}
+
+.hero p {
+    font-size: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
 button {
-    padding: 10px 20px;
-    margin: 10px;
+    padding: 12px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
 }
 
-/* DARK MODE */
-.toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
+.cta {
+    background: var(--accent);
+    color: black;
+    font-weight: bold;
 }
 
 /* SECTIONS */
 .section {
-    display: none;
-    padding: 50px;
-    max-width: 900px;
+    padding: 60px 20px;
+    max-width: 1000px;
     margin: auto;
 }
 
-.active {
-    display: block;
+.section h2 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-/* CARDS */
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
 .card {
     background: var(--card);
     padding: 20px;
-    margin: 15px 0;
-    border-radius: 10px;
-}
-
-/* DEMO */
-input {
-    padding: 10px;
-    margin: 5px;
-}
-
-canvas {
-    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
 /* FLOW DIAGRAM */
 .flow {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    text-align: center;
 }
 
-/* PREVIEW */
-.preview-box {
-    background: #e2e8f0;
-    padding: 15px;
-    border-radius: 10px;
+/* DEMO */
+.demo {
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+}
+
+/* DASHBOARD */
+.hidden {
+    display: none;
 }
 
 /* FOOTER */
 footer {
-    background: var(--primary);
-    color: white;
     text-align: center;
     padding: 20px;
+    background: var(--primary);
+    color: white;
 }
 </style>
 </head>
 
 <body>
 
-<button class="toggle" onclick="toggleDark()">🌙</button>
-
 <nav>
-    <a onclick="showPage('home')">Home</a>
-    <a onclick="showPage('dashboard')">Dashboard</a>
+    <h1>FlowFund</h1>
+    <div>
+        <span onclick="showPage('home')">Home</span>
+        <span onclick="showPage('dashboard')">Dashboard</span>
+        <span onclick="toggleDark()">🌙</span>
+    </div>
 </nav>
 
-<!-- HOME -->
-<div id="home" class="section active">
+<!-- HERO -->
+<div id="home">
 
-<header>
-    <h1>FlowFund</h1>
-    <p>Your Financial Autopilot</p>
-    <button onclick="showPage('dashboard')">Launch Dashboard</button>
-</header>
+<div class="hero">
+    <h1>Your Financial Autopilot</h1>
+    <p>
+        FlowFund uses AI to continuously optimize your spending, saving, and investing—
+        so your money evolves with your life automatically.
+    </p>
+    <button class="cta" onclick="showPage('dashboard')">Try Demo</button>
+</div>
 
-<section>
-    <h2>About</h2>
-    <p>FlowFund automatically adjusts your finances based on your life changes.</p>
-</section>
+<!-- PROBLEM -->
+<div class="section">
+    <h2>The Problem</h2>
+    <div class="grid">
+        <div class="card">
+            <p>Budgets are static while life is dynamic.</p>
+        </div>
+        <div class="card">
+            <p>People forget to adjust financial plans.</p>
+        </div>
+        <div class="card">
+            <p>Investing feels disconnected from real goals.</p>
+        </div>
+        <div class="card">
+            <p>Financial tools don’t adapt to change.</p>
+        </div>
+    </div>
+</div>
 
-<section>
+<!-- SOLUTION -->
+<div class="section">
+    <h2>The Solution</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">
+        FlowFund acts as a real-time financial engine. It continuously updates your
+        financial plan based on income, spending patterns, and life events.
+    </p>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section">
     <h2>How It Works</h2>
-    <div class="card">Connect Accounts</div>
-    <div class="card">AI Analysis</div>
-    <div class="card">Auto Optimization</div>
-</section>
 
-<section>
-    <h2>Financial Flow</h2>
     <div class="flow">
-        <div>💰</div><div>➡️</div><div>📊</div><div>➡️</div><div>📈</div>
+        <div>💰 Income</div>
+        <div>➡</div>
+        <div>📊 Analyze</div>
+        <div>➡</div>
+        <div>⚙ Optimize</div>
+        <div>➡</div>
+        <div>📈 Grow</div>
     </div>
-</section>
+</div>
 
-<section>
+<!-- AI VALUE -->
+<div class="section">
+    <h2>Why AI Makes It Better</h2>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Real-Time Adjustments</h3>
+            <p>Your budget updates instantly when your income or expenses change.</p>
+        </div>
+
+        <div class="card">
+            <h3>Predictive Insights</h3>
+            <p>AI forecasts financial risks before they happen.</p>
+        </div>
+
+        <div class="card">
+            <h3>Goal Optimization</h3>
+            <p>Automatically reallocates money toward your goals.</p>
+        </div>
+
+        <div class="card">
+            <h3>Behavior Learning</h3>
+            <p>Adapts to your spending habits over time.</p>
+        </div>
+    </div>
+</div>
+
+<!-- DEMO -->
+<div class="section">
     <h2>Interactive Demo</h2>
-    <input id="income" placeholder="Income">
-    <input id="expenses" placeholder="Expenses">
-    <input id="invest" placeholder="Investing"><br>
-    <button onclick="updateChart()">Analyze</button>
-    <h3 id="result"></h3>
-    <canvas id="chart"></canvas>
-</section>
 
-<section>
-    <h2>App Preview</h2>
+    <div class="demo">
+        <input id="income" placeholder="Income">
+        <input id="expenses" placeholder="Expenses">
+        <input id="invest" placeholder="Investing"><br>
 
-    <div class="card">
-        <h3>Budget Dashboard</h3>
-        <div class="preview-box">
-            Checking: $3200<br>
-            Savings: $8500
-            <div style="height:10px;background:green;width:70%;"></div>
-        </div>
+        <button onclick="updateChart()">Analyze</button>
+
+        <h3 id="result"></h3>
+        <canvas id="chart"></canvas>
     </div>
-
-    <div class="card">
-        <h3>AI Insights</h3>
-        <div class="preview-box">
-            ⚡ Increase savings<br>
-            ⚠ Reduce spending<br>
-            📈 Invest more
-        </div>
-    </div>
-</section>
+</div>
 
 </div>
 
 <!-- DASHBOARD -->
-<div id="dashboard" class="section">
+<div id="dashboard" class="hidden">
 
-<header>
-    <h1 id="welcome">Welcome</h1>
-</header>
+<div class="section">
+    <h2 id="welcome">Welcome</h2>
 
-<section>
-    <input id="nameInput" placeholder="Enter name">
+    <input id="nameInput" placeholder="Enter your name">
     <button onclick="setName()">Save</button>
 
     <div class="card">
@@ -204,15 +263,15 @@ footer {
     </div>
 
     <div class="card">
-        <h3>Breakdown</h3>
+        <h3>Financial Breakdown</h3>
         <canvas id="dashChart"></canvas>
     </div>
 
     <div class="card">
-        <h3>AI Advice</h3>
-        <p>Increase savings by 10%</p>
+        <h3>AI Insights</h3>
+        <p>Increase savings by 10% and reduce discretionary spending.</p>
     </div>
-</section>
+</div>
 
 </div>
 
@@ -221,18 +280,15 @@ footer {
 <script>
 let chart, dashChart;
 
-/* NAVIGATION */
 function showPage(page) {
-    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-    document.getElementById(page).classList.add('active');
+    document.getElementById('home').style.display = page === 'home' ? 'block' : 'none';
+    document.getElementById('dashboard').style.display = page === 'dashboard' ? 'block' : 'none';
 }
 
-/* DARK MODE */
 function toggleDark() {
     document.body.classList.toggle("dark");
 }
 
-/* DEMO CHART */
 function updateChart() {
     let income = parseFloat(document.getElementById("income").value);
     let expenses = parseFloat(document.getElementById("expenses").value);
@@ -256,7 +312,6 @@ function updateChart() {
     });
 }
 
-/* DASHBOARD */
 function setName() {
     let name = document.getElementById("nameInput").value;
     document.getElementById("welcome").innerText = "Welcome, " + name;
