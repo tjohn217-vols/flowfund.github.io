@@ -28,55 +28,32 @@ body {
     color: var(--text);
 }
 
-/* NAVBAR */
+/* NAV */
 nav {
-    padding: 15px;
     background: var(--primary);
+    padding: 15px;
     text-align: center;
 }
 
 nav a {
     color: white;
     margin: 10px;
-    text-decoration: none;
+    cursor: pointer;
 }
 
 /* HEADER */
 header {
     background: var(--primary);
     color: white;
-    padding: 60px 20px;
+    padding: 60px;
     text-align: center;
-    animation: fadeIn 1.5s ease-in;
-}
-
-.logo {
-    font-size: 42px;
-    font-weight: bold;
-}
-
-.logo span {
-    color: #00d4ff;
 }
 
 /* BUTTONS */
 button {
-    padding: 12px 20px;
-    margin-top: 15px;
-    border: none;
-    border-radius: 6px;
+    padding: 10px 20px;
+    margin: 10px;
     cursor: pointer;
-    transition: transform 0.2s;
-}
-
-button:hover {
-    transform: scale(1.05);
-}
-
-.cta {
-    background: #00d4ff;
-    color: black;
-    font-weight: bold;
 }
 
 /* DARK MODE */
@@ -84,64 +61,49 @@ button:hover {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: black;
-    color: white;
 }
 
 /* SECTIONS */
-section {
-    padding: 50px 20px;
-    max-width: 1000px;
+.section {
+    display: none;
+    padding: 50px;
+    max-width: 900px;
     margin: auto;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease;
 }
 
-section.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-h2 {
-    color: var(--primary);
+.active {
+    display: block;
 }
 
 /* CARDS */
-.features {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
 .card {
     background: var(--card);
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin: 15px 0;
+    border-radius: 10px;
 }
 
 /* DEMO */
-.demo {
-    text-align: center;
-}
-
 input {
     padding: 10px;
-    margin: 10px;
+    margin: 5px;
 }
 
-/* CHART */
 canvas {
     max-width: 400px;
-    margin: 20px auto;
 }
 
-/* DIAGRAM */
+/* FLOW DIAGRAM */
 .flow {
     display: flex;
     justify-content: space-around;
-    font-size: 18px;
+}
+
+/* PREVIEW */
+.preview-box {
+    background: #e2e8f0;
+    padding: 15px;
+    border-radius: 10px;
 }
 
 /* FOOTER */
@@ -151,12 +113,6 @@ footer {
     text-align: center;
     padding: 20px;
 }
-
-/* ANIMATION */
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
 </style>
 </head>
 
@@ -165,155 +121,158 @@ footer {
 <button class="toggle" onclick="toggleDark()">🌙</button>
 
 <nav>
-    <a href="index.html">Home</a>
-    <a href="dashboard.html">Dashboard</a>
+    <a onclick="showPage('home')">Home</a>
+    <a onclick="showPage('dashboard')">Dashboard</a>
 </nav>
 
-<header>
-    <div class="logo">Flow<span>Fund</span></div>
-    <p>Your Financial Autopilot</p>
+<!-- HOME -->
+<div id="home" class="section active">
 
-    <button class="cta" onclick="window.location.href='dashboard.html'">
-        View Demo Dashboard
-    </button>
+<header>
+    <h1>FlowFund</h1>
+    <p>Your Financial Autopilot</p>
+    <button onclick="showPage('dashboard')">Launch Dashboard</button>
 </header>
 
 <section>
-    <h2>About FlowFund</h2>
-    <p>
-        FlowFund is an AI-powered platform that automatically adjusts your finances in real time.
-        Instead of static budgets, your money evolves with your life—whether you change jobs,
-        move cities, or set new goals.
-    </p>
+    <h2>About</h2>
+    <p>FlowFund automatically adjusts your finances based on your life changes.</p>
 </section>
 
 <section>
     <h2>How It Works</h2>
-
-    <div class="card">
-        <h3>1. Connect Accounts</h3>
-        <p>Securely link your bank and financial data.</p>
-    </div>
-
-    <div class="card">
-        <h3>2. AI Analysis</h3>
-        <p>FlowFund analyzes your income, spending, and risk.</p>
-    </div>
-
-    <div class="card">
-        <h3>3. Automatic Optimization</h3>
-        <p>Your finances update automatically as your life changes.</p>
-    </div>
+    <div class="card">Connect Accounts</div>
+    <div class="card">AI Analysis</div>
+    <div class="card">Auto Optimization</div>
 </section>
 
 <section>
-    <h2>Features</h2>
-    <div class="features">
-        <div class="card"><h3>Dynamic Budgeting</h3></div>
-        <div class="card"><h3>Life Event AI</h3></div>
-        <div class="card"><h3>Goal Investing</h3></div>
-        <div class="card"><h3>Simulation Engine</h3></div>
-    </div>
-</section>
-
-<section>
-    <h2>Financial Flow Diagram</h2>
-    <div class="card">
-        <div class="flow">
-            <div>💰 Income</div>
-            <div>➡️</div>
-            <div>📊 Budget</div>
-            <div>➡️</div>
-            <div>📈 Invest</div>
-            <div>➡️</div>
-            <div>🚀 Growth</div>
-        </div>
+    <h2>Financial Flow</h2>
+    <div class="flow">
+        <div>💰</div><div>➡️</div><div>📊</div><div>➡️</div><div>📈</div>
     </div>
 </section>
 
 <section>
     <h2>Interactive Demo</h2>
-
-    <div class="demo">
-        <input type="number" id="income" placeholder="Income">
-        <input type="number" id="expenses" placeholder="Expenses"><br>
-
-        <button onclick="updateChart()">Analyze</button>
-
-        <h3 id="result"></h3>
-
-        <canvas id="chart"></canvas>
-    </div>
+    <input id="income" placeholder="Income">
+    <input id="expenses" placeholder="Expenses">
+    <input id="invest" placeholder="Investing"><br>
+    <button onclick="updateChart()">Analyze</button>
+    <h3 id="result"></h3>
+    <canvas id="chart"></canvas>
 </section>
 
 <section>
     <h2>App Preview</h2>
 
     <div class="card">
-        <p><strong>Budget Dashboard</strong></p>
-        <div style="background:#ddd; height:150px; border-radius:10px;"></div>
+        <h3>Budget Dashboard</h3>
+        <div class="preview-box">
+            Checking: $3200<br>
+            Savings: $8500
+            <div style="height:10px;background:green;width:70%;"></div>
+        </div>
     </div>
 
     <div class="card">
-        <p><strong>AI Insights Panel</strong></p>
-        <div style="background:#ccc; height:150px; border-radius:10px;"></div>
+        <h3>AI Insights</h3>
+        <div class="preview-box">
+            ⚡ Increase savings<br>
+            ⚠ Reduce spending<br>
+            📈 Invest more
+        </div>
     </div>
 </section>
 
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="section">
+
+<header>
+    <h1 id="welcome">Welcome</h1>
+</header>
+
 <section>
-    <h2>Scenario</h2>
-    <p>
-        You get a new job → FlowFund increases savings, adjusts taxes,
-        and reallocates investments instantly.
-    </p>
+    <input id="nameInput" placeholder="Enter name">
+    <button onclick="setName()">Save</button>
+
+    <div class="card">
+        <h3>Net Worth</h3>
+        <p>$52,400</p>
+    </div>
+
+    <div class="card">
+        <h3>Breakdown</h3>
+        <canvas id="dashChart"></canvas>
+    </div>
+
+    <div class="card">
+        <h3>AI Advice</h3>
+        <p>Increase savings by 10%</p>
+    </div>
 </section>
 
-<footer>
-    <p>© 2026 FlowFund</p>
-</footer>
+</div>
+
+<footer>© 2026 FlowFund</footer>
 
 <script>
-let chart;
+let chart, dashChart;
 
+/* NAVIGATION */
+function showPage(page) {
+    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(page).classList.add('active');
+}
+
+/* DARK MODE */
+function toggleDark() {
+    document.body.classList.toggle("dark");
+}
+
+/* DEMO CHART */
 function updateChart() {
     let income = parseFloat(document.getElementById("income").value);
     let expenses = parseFloat(document.getElementById("expenses").value);
-    let savings = income - expenses;
+    let invest = parseFloat(document.getElementById("invest").value);
+
+    let savings = income - expenses - invest;
 
     document.getElementById("result").innerText =
-        savings >= 0 ? "Saving $" + savings : "Overspending $" + Math.abs(savings);
-
-    let data = [expenses, savings > 0 ? savings : 0];
+        savings >= 0 ? "Savings $" + savings : "Overspending $" + Math.abs(savings);
 
     if (chart) chart.destroy();
 
-    let ctx = document.getElementById('chart').getContext('2d');
-
-    chart = new Chart(ctx, {
-        type: 'pie',
+    chart = new Chart(document.getElementById('chart'), {
+        type: 'doughnut',
         data: {
-            labels: ['Expenses', 'Savings'],
+            labels: ['Spending', 'Savings', 'Investing'],
             datasets: [{
-                data: data
+                data: [expenses, savings > 0 ? savings : 0, invest]
             }]
         }
     });
 }
 
-function toggleDark() {
-    document.body.classList.toggle("dark");
-}
+/* DASHBOARD */
+function setName() {
+    let name = document.getElementById("nameInput").value;
+    document.getElementById("welcome").innerText = "Welcome, " + name;
 
-const sections = document.querySelectorAll("section");
+    if (dashChart) dashChart.destroy();
 
-window.addEventListener("scroll", () => {
-    sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-            sec.classList.add("show");
+    dashChart = new Chart(document.getElementById('dashChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Spending', 'Savings', 'Investing'],
+            datasets: [{
+                data: [1200, 900, 600]
+            }]
         }
     });
-});
+}
 </script>
 
 </body>
