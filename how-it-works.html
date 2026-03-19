@@ -1,1 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works | FlowFund</title>
 
+<style>
+:root {
+    --primary: #0a2540;
+    --accent: #00d4ff;
+    --bg: #f8fafc;
+    --text: #0f172a;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* NAVBAR */
+nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 37, 64, 0.95);
+    padding: 15px 40px;
+    color: white;
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+nav a:hover {
+    opacity: 1;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #0a2540, #1e3a8a);
+    color: white;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    opacity: 0.9;
+}
+
+/* SECTION */
+.section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 80px 20px;
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* STEPS */
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.step {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    transition: 0.3s;
+}
+
+.step:hover {
+    transform: translateY(-5px);
+}
+
+.step h3 {
+    margin-top: 0;
+}
+
+/* PROCESS FLOW */
+.process {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+/* CTA */
+.cta {
+    text-align: center;
+    background: linear-gradient(135deg, #1e3a8a, #0a2540);
+    color: white;
+    padding: 60px 20px;
+    border-radius: 20px;
+}
+
+/* BUTTON */
+button {
+    padding: 14px 24px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: var(--primary);
+    color: white;
+    margin-top: 60px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <h2>FlowFund</h2>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="features.html">Features</a>
+        <a href="ai-insights.html">AI Insights</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>How FlowFund Works</h1>
+    <p>
+        FlowFund acts as your personal financial autopilot—continuously analyzing,
+        optimizing, and improving your financial decisions in real time.
+    </p>
+
+    <button onclick="window.location.href='dashboard.html'">
+        Launch Dashboard
+    </button>
+</div>
+
+<!-- STEPS -->
+<div class="section">
+    <h2>Step-by-Step</h2>
+
+    <div class="steps">
+
+        <div class="step">
+            <h3>1. Connect Your Accounts</h3>
+            <p>
+                Securely link your bank accounts, credit cards, and financial data.
+                FlowFund aggregates everything into one unified dashboard.
+            </p>
+        </div>
+
+        <div class="step">
+            <h3>2. Analyze Your Behavior</h3>
+            <p>
+                Our AI studies your income, spending habits, and financial patterns
+                to understand how your money flows over time.
+            </p>
+        </div>
+
+        <div class="step">
+            <h3>3. Optimize in Real Time</h3>
+            <p>
+                FlowFund automatically adjusts your budget, savings, and allocations
+                based on your current financial situation.
+            </p>
+        </div>
+
+        <div class="step">
+            <h3>4. Predict Your Future</h3>
+            <p>
+                Get forward-looking insights with projections that show where your
+                finances are heading over the next 12 months.
+            </p>
+        </div>
+
+        <div class="step">
+            <h3>5. Simulate Scenarios</h3>
+            <p>
+                Test “what-if” situations like income changes, large purchases,
+                or savings goals—and see the impact instantly.
+            </p>
+        </div>
+
+        <div class="step">
+            <h3>6. Improve Automatically</h3>
+            <p>
+                FlowFund continuously learns and adapts, helping you make better
+                financial decisions without constant manual effort.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<!-- PROCESS EXPLANATION -->
+<div class="section">
+    <h2>Your Financial Engine</h2>
+
+    <div class="process">
+        <p>
+            Unlike traditional budgeting apps, FlowFund doesn’t rely on static plans.
+            It functions as a dynamic system that continuously updates based on real-world behavior.
+        </p>
+
+        <p>
+            As your income, spending, and goals evolve, FlowFund recalculates the
+            optimal allocation of your money—balancing spending, saving, and investing
+            to maximize long-term financial health.
+        </p>
+
+        <p>
+            This creates a fully adaptive financial system that works in the background,
+            allowing you to focus on your life while your money is optimized automatically.
+        </p>
+    </div>
+</div>
+
+<!-- CTA -->
+<div class="section">
+    <div class="cta">
+        <h2>Start Your Financial Autopilot</h2>
+        <p>See how FlowFund transforms your finances in real time.</p>
+
+        <button onclick="window.location.href='dashboard.html'">
+            Go to Dashboard
+        </button>
+    </div>
+</div>
+
+<footer>
+    © 2026 FlowFund
+</footer>
+
+</body>
+</html>
