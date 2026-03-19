@@ -20,7 +20,6 @@ body {
     color: var(--text);
 }
 
-/* NAV */
 nav {
     display: flex;
     justify-content: space-between;
@@ -35,29 +34,25 @@ nav a {
     margin-left: 20px;
 }
 
-/* HERO */
 .hero {
     text-align: center;
-    padding: 60px 20px;
+    padding: 70px 20px;
     background: linear-gradient(135deg, #0a2540, #1e3a8a);
     color: white;
 }
 
-/* SECTION */
 .section {
     max-width: 1000px;
     margin: auto;
     padding: 60px 20px;
 }
 
-/* GRID */
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
 
-/* CARD */
 .card {
     background: white;
     padding: 20px;
@@ -66,15 +61,20 @@ nav a {
     margin-bottom: 15px;
 }
 
-/* FLOW */
 .flow {
     display: flex;
     justify-content: space-between;
     text-align: center;
-    margin-top: 30px;
+    margin: 30px 0;
 }
 
-/* FOOTER */
+button {
+    padding: 12px 20px;
+    background: var(--accent);
+    border: none;
+    cursor: pointer;
+}
+
 footer {
     text-align: center;
     padding: 20px;
@@ -86,13 +86,11 @@ footer {
 
 <body>
 
-<!-- NAV -->
 <nav>
     <h2>FlowFund</h2>
     <div>
         <a href="index.html">Home</a>
         <a href="dashboard.html">Dashboard</a>
-        <a href="how-it-works.html">How It Works</a>
         <a href="pricing.html">Pricing</a>
         <a href="about.html">About</a>
         <a href="security.html">Security</a>
@@ -103,18 +101,21 @@ footer {
 <div class="hero">
     <h1>How FlowFund Works</h1>
     <p>
-        A real-time AI engine that continuously optimizes your financial life.
+        FlowFund is not just a budgeting tool—it is a dynamic financial system
+        that continuously learns, adapts, and optimizes your financial life.
     </p>
 </div>
 
-<!-- PROCESS -->
+<!-- STEP BY STEP -->
 <div class="section">
-    <h2 style="text-align:center;">The FlowFund Engine</h2>
+    <h2 style="text-align:center;">Step-by-Step System</h2>
 
     <div class="flow">
         <div>💰 Input</div>
         <div>➡</div>
         <div>📊 Analyze</div>
+        <div>➡</div>
+        <div>🧠 Learn</div>
         <div>➡</div>
         <div>⚙ Optimize</div>
         <div>➡</div>
@@ -122,78 +123,150 @@ footer {
     </div>
 
     <div class="card">
-        <h3>1. Input Your Financial Data</h3>
-        <p>Enter income, expenses, investments, and net worth.</p>
+        <h3>1. Input Financial Data</h3>
+        <p>
+            Users provide key financial inputs including income, expenses,
+            investments, and net worth. This creates a baseline financial profile.
+        </p>
     </div>
 
     <div class="card">
-        <h3>2. AI Analysis</h3>
-        <p>FlowFund evaluates your behavior and financial patterns.</p>
+        <h3>2. Behavioral Analysis</h3>
+        <p>
+            FlowFund analyzes spending patterns, savings rates, and investment behavior
+            to identify inefficiencies and risks.
+        </p>
     </div>
 
     <div class="card">
-        <h3>3. Optimization Engine</h3>
-        <p>Automatically reallocates money toward savings and growth.</p>
+        <h3>3. Adaptive Learning</h3>
+        <p>
+            The system continuously learns from changes in your financial inputs,
+            allowing it to adjust recommendations as your situation evolves.
+        </p>
     </div>
 
     <div class="card">
-        <h3>4. Continuous Adaptation</h3>
-        <p>Your financial plan evolves as your life changes.</p>
+        <h3>4. Optimization Engine</h3>
+        <p>
+            Funds are dynamically reallocated to improve savings, reduce unnecessary
+            spending, and increase long-term investment growth.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>5. Continuous Feedback Loop</h3>
+        <p>
+            The system re-evaluates your finances in real time, ensuring your financial
+            strategy stays aligned with your goals.
+        </p>
+    </div>
+</div>
+
+<!-- WHY AI INSIGHTS -->
+<div class="section">
+    <h2 style="text-align:center;">Why AI Insights Matter</h2>
+
+    <p style="max-width:700px; margin:auto; text-align:center;">
+        Traditional budgeting tools require manual updates and often fail to reflect
+        real-life changes. FlowFund’s AI insights bridge this gap by continuously
+        identifying inefficiencies and providing actionable recommendations.
+    </p>
+
+    <div class="card">
+        <p>
+            AI insights transform raw financial data into meaningful actions—helping
+            users make smarter decisions without constant manual tracking.
+        </p>
+    </div>
+</div>
+
+<!-- TRIGGERS -->
+<div class="section">
+    <h2 style="text-align:center;">What Triggers AI Insights?</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>High Spending Detection</h3>
+            <p>
+                Triggered when expenses exceed ~70% of income. The system flags
+                potential overspending and recommends reductions.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Low Savings Rate</h3>
+            <p>
+                If savings fall below ~20% of income, the system suggests increasing
+                savings to improve financial stability.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Under-Investing</h3>
+            <p>
+                When investment contributions are below ~10% of income, FlowFund
+                recommends reallocating funds toward long-term growth.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Weak Net Worth Growth</h3>
+            <p>
+                If net worth is low relative to income, the system highlights the need
+                to build assets and improve financial positioning.
+            </p>
+        </div>
+
     </div>
 </div>
 
 <!-- FEATURES -->
 <div class="section">
-    <h2 style="text-align:center;">Core Features</h2>
+    <h2 style="text-align:center;">Core Features Explained</h2>
 
     <div class="grid">
+
         <div class="card">
             <h3>Smart Budgeting</h3>
-            <p>Automatically adjusts spending categories in real time.</p>
+            <p>
+                Automatically adjusts spending categories based on real-time financial
+                behavior, eliminating the need for manual budgeting updates.
+            </p>
         </div>
 
         <div class="card">
             <h3>Predictive Forecasting</h3>
-            <p>Visualize your financial future with projections.</p>
+            <p>
+                Uses current financial inputs to simulate future net worth and identify
+                long-term financial outcomes.
+            </p>
         </div>
 
         <div class="card">
-            <h3>Scenario Testing</h3>
-            <p>Simulate income and spending changes instantly.</p>
+            <h3>Scenario Simulation</h3>
+            <p>
+                Allows users to test different income or spending scenarios to see how
+                changes impact their financial future.
+            </p>
         </div>
 
         <div class="card">
             <h3>Financial Health Score</h3>
-            <p>Get a clear snapshot of your financial strength.</p>
+            <p>
+                Aggregates multiple financial indicators into a single score to provide
+                a clear snapshot of overall financial health.
+            </p>
         </div>
-    </div>
-</div>
 
-<!-- AI INSIGHTS -->
-<div class="section">
-    <h2 style="text-align:center;">AI-Powered Insights</h2>
-
-    <div class="card">
-        <p>⚠️ You are spending more than optimal on discretionary categories.</p>
-    </div>
-
-    <div class="card">
-        <p>📈 Increasing your investments could significantly grow your net worth over time.</p>
-    </div>
-
-    <div class="card">
-        <p>💡 Your savings rate is below recommended levels.</p>
-    </div>
-
-    <div class="card">
-        <p>✅ Users who follow FlowFund insights improve savings significantly.</p>
     </div>
 </div>
 
 <!-- CTA -->
 <div class="section" style="text-align:center;">
-    <h2>See It In Action</h2>
-    <button onclick="window.location.href='dashboard.html'" style="padding:12px 20px; background:#00d4ff; border:none;">
+    <h2>Experience FlowFund in Action</h2>
+    <button onclick="window.location.href='dashboard.html'">
         Launch Dashboard
     </button>
 </div>
