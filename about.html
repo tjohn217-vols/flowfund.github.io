@@ -1,41 +1,206 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About | FlowFund</title>
+
 <style>
-body {font-family: Arial; background:#f8fafc;}
-.section {max-width:900px; margin:auto; padding:40px;}
-nav {background:#0a2540; color:white; padding:15px;}
-nav a {color:white; margin-right:20px;}
+:root {
+    --primary: #0a2540;
+    --accent: #00d4ff;
+    --bg: #f8fafc;
+    --text: #0f172a;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* NAVBAR */
+nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 37, 64, 0.95);
+    padding: 15px 40px;
+    color: white;
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+nav a:hover {
+    opacity: 1;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 90px 20px;
+    background: linear-gradient(135deg, #0a2540, #1e3a8a);
+    color: white;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    opacity: 0.9;
+}
+
+/* SECTION */
+.section {
+    max-width: 900px;
+    margin: auto;
+    padding: 70px 20px;
+    line-height: 1.7;
+}
+
+.section h2 {
+    margin-top: 40px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    margin-top: 30px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: var(--primary);
+    color: white;
+    margin-top: 60px;
+}
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <nav>
-<a href="index.html">Home</a>
-<a href="dashboard.html">Dashboard</a>
+    <h2>FlowFund</h2>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="features.html">Features</a>
+        <a href="ai-insights.html">AI Insights</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+    </div>
 </nav>
 
+<!-- HERO -->
+<div class="hero">
+    <h1>About FlowFund</h1>
+    <p>
+        Rethinking personal finance through intelligent automation and real-time optimization.
+    </p>
+</div>
+
+<!-- MAIN CONTENT -->
 <div class="section">
-<h1>About FlowFund</h1>
 
-<p>
-FlowFund was created by a graduate student at the University of Tennessee, Knoxville,
-with a passion for budgeting, financial optimization, and maximizing economic potential.
-</p>
+    <h2>The Idea Behind FlowFund</h2>
+    <p>
+        FlowFund was created to challenge a fundamental flaw in personal finance:
+        most tools are static, while life is constantly changing.
+    </p>
 
-<p>
-The goal of FlowFund is simple: to make financial decision-making dynamic,
-intelligent, and accessible to everyone.
-</p>
+    <p>
+        Traditional budgeting apps require users to manually track, adjust, and rethink
+        their financial plans over and over again. But in reality, income fluctuates,
+        expenses shift, and priorities evolve. Static tools simply don’t keep up.
+    </p>
 
-<p>
-Traditional budgeting tools are static. FlowFund introduces a new paradigm—
-real-time financial optimization powered by AI.
-</p>
+    <p>
+        FlowFund introduces a new approach—financial autopilot. Instead of forcing users
+        to constantly manage their finances, the platform dynamically adapts in real time,
+        optimizing spending, saving, and investing automatically.
+    </p>
+
+    <div class="card">
+        <h3>Core Philosophy</h3>
+        <p>
+            Your financial system should evolve as fast as your life does.
+            FlowFund is built on the idea that better financial outcomes come from
+            continuous optimization—not occasional adjustments.
+        </p>
+    </div>
+
+    <h2>About the Creator</h2>
+    <p>
+        FlowFund was developed by a graduate student at the University of Tennessee, Knoxville,
+        with a deep interest in budgeting, financial strategy, and maximizing long-term
+        economic potential.
+    </p>
+
+    <p>
+        As a student, managing limited resources efficiently is essential.
+        This experience highlighted how difficult it can be to maintain
+        a consistent and effective financial plan using traditional tools.
+    </p>
+
+    <p>
+        That challenge sparked the idea for FlowFund—an intelligent system that removes
+        the friction from financial decision-making and replaces it with automation,
+        insight, and adaptability.
+    </p>
+
+    <div class="card">
+        <h3>Why This Matters</h3>
+        <p>
+            Many people don’t fail financially because they lack discipline—they struggle
+            because the tools available to them are outdated, reactive, and disconnected
+            from real behavior.
+        </p>
+
+        <p>
+            FlowFund aims to bridge that gap by creating a system that actively works
+            alongside the user, helping them make better decisions without requiring
+            constant attention.
+        </p>
+    </div>
+
+    <h2>The Vision</h2>
+    <p>
+        The long-term vision for FlowFund is to become a fully autonomous financial system—
+        one that not only tracks and analyzes data, but actively manages and optimizes
+        financial outcomes in real time.
+    </p>
+
+    <p>
+        By combining artificial intelligence with financial data, FlowFund represents
+        a shift from passive tracking to proactive financial intelligence.
+    </p>
 
 </div>
+
+<footer>
+    © 2026 FlowFund
+</footer>
 
 </body>
 </html>
