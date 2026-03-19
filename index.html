@@ -5,21 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FlowFund | Financial Autopilot</title>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <style>
 :root {
-    --bg: #f8fafc;
-    --text: #0f172a;
-    --card: #ffffff;
     --primary: #0a2540;
     --accent: #00d4ff;
-}
-
-body.dark {
-    --bg: #0f172a;
-    --text: #e2e8f0;
-    --card: #1e293b;
+    --bg: #f8fafc;
+    --text: #0f172a;
 }
 
 body {
@@ -29,12 +20,13 @@ body {
     color: var(--text);
 }
 
-/* NAV */
+/* NAVBAR */
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    align-items: center;
     background: var(--primary);
+    padding: 15px 30px;
     color: white;
 }
 
@@ -42,21 +34,28 @@ nav h1 {
     margin: 0;
 }
 
-nav div span {
+nav a {
+    color: white;
     margin-left: 20px;
-    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav a:hover {
+    text-decoration: underline;
 }
 
 /* HERO */
 .hero {
     text-align: center;
-    padding: 80px 20px;
+    padding: 100px 20px;
     background: linear-gradient(135deg, #0a2540, #1e3a8a);
     color: white;
 }
 
 .hero h1 {
-    font-size: 48px;
+    font-size: 50px;
+    margin-bottom: 20px;
 }
 
 .hero p {
@@ -70,61 +69,32 @@ button {
     margin-top: 20px;
     border: none;
     border-radius: 6px;
-    cursor: pointer;
-}
-
-.cta {
     background: var(--accent);
-    color: black;
+    cursor: pointer;
     font-weight: bold;
 }
 
-/* SECTIONS */
+/* SECTION */
 .section {
-    padding: 60px 20px;
     max-width: 1000px;
     margin: auto;
-}
-
-.section h2 {
+    padding: 60px 20px;
     text-align: center;
-    margin-bottom: 20px;
 }
 
 /* GRID */
 .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
 
+/* CARD */
 .card {
-    background: var(--card);
-    padding: 20px;
+    background: white;
+    padding: 25px;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-}
-
-/* FLOW DIAGRAM */
-.flow {
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-}
-
-/* DEMO */
-.demo {
-    text-align: center;
-}
-
-input {
-    padding: 10px;
-    margin: 5px;
-}
-
-/* DASHBOARD */
-.hidden {
-    display: none;
 }
 
 /* FOOTER */
@@ -139,196 +109,97 @@ footer {
 
 <body>
 
+<!-- NAVBAR -->
 <nav>
     <h1>FlowFund</h1>
+
     <div>
-        <span onclick="showPage('home')">Home</span>
-        <span onclick="showPage('dashboard')">Dashboard</span>
-        <span onclick="toggleDark()">🌙</span>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="features.html">Features</a>
+        <a href="ai-insights.html">AI Insights</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
     </div>
 </nav>
 
 <!-- HERO -->
-<div id="home">
-
 <div class="hero">
     <h1>Your Financial Autopilot</h1>
     <p>
-        FlowFund uses AI to continuously optimize your spending, saving, and investing—
-        so your money evolves with your life automatically.
+        FlowFund uses AI to dynamically optimize your spending, saving, and investing—
+        so your finances evolve automatically with your life.
     </p>
-    <button class="cta" onclick="showPage('dashboard')">Try Demo</button>
+
+    <button onclick="window.location.href='dashboard.html'">
+        Launch Dashboard
+    </button>
 </div>
 
 <!-- PROBLEM -->
 <div class="section">
     <h2>The Problem</h2>
+
     <div class="grid">
-        <div class="card">
-            <p>Budgets are static while life is dynamic.</p>
-        </div>
-        <div class="card">
-            <p>People forget to adjust financial plans.</p>
-        </div>
-        <div class="card">
-            <p>Investing feels disconnected from real goals.</p>
-        </div>
-        <div class="card">
-            <p>Financial tools don’t adapt to change.</p>
-        </div>
+        <div class="card">Budgets are static, but life changes constantly.</div>
+        <div class="card">People forget to update financial plans.</div>
+        <div class="card">Investing is disconnected from real behavior.</div>
+        <div class="card">Most tools don’t adapt in real time.</div>
     </div>
 </div>
 
 <!-- SOLUTION -->
 <div class="section">
     <h2>The Solution</h2>
-    <p style="text-align:center; max-width:700px; margin:auto;">
-        FlowFund acts as a real-time financial engine. It continuously updates your
-        financial plan based on income, spending patterns, and life events.
+
+    <p style="max-width:700px; margin:auto;">
+        FlowFund is a real-time financial optimization engine.
+        It continuously analyzes your financial behavior and automatically
+        adjusts your allocations to maximize growth and stability.
     </p>
 </div>
 
-<!-- HOW IT WORKS -->
+<!-- FEATURES -->
 <div class="section">
-    <h2>How It Works</h2>
-
-    <div class="flow">
-        <div>💰 Income</div>
-        <div>➡</div>
-        <div>📊 Analyze</div>
-        <div>➡</div>
-        <div>⚙ Optimize</div>
-        <div>➡</div>
-        <div>📈 Grow</div>
-    </div>
-</div>
-
-<!-- AI VALUE -->
-<div class="section">
-    <h2>Why AI Makes It Better</h2>
+    <h2>Core Features</h2>
 
     <div class="grid">
         <div class="card">
-            <h3>Real-Time Adjustments</h3>
-            <p>Your budget updates instantly when your income or expenses change.</p>
+            <h3>AI Budget Optimization</h3>
+            <p>Automatically adjusts spending and saving in real time.</p>
         </div>
 
         <div class="card">
-            <h3>Predictive Insights</h3>
-            <p>AI forecasts financial risks before they happen.</p>
+            <h3>Predictive Forecasting</h3>
+            <p>See your financial future with 12-month projections.</p>
         </div>
 
         <div class="card">
-            <h3>Goal Optimization</h3>
-            <p>Automatically reallocates money toward your goals.</p>
+            <h3>Scenario Simulation</h3>
+            <p>Test how income and spending changes impact your future.</p>
         </div>
 
         <div class="card">
-            <h3>Behavior Learning</h3>
-            <p>Adapts to your spending habits over time.</p>
+            <h3>Financial Health Score</h3>
+            <p>Understand your financial strength instantly.</p>
         </div>
     </div>
 </div>
 
-<!-- DEMO -->
+<!-- CTA -->
 <div class="section">
-    <h2>Interactive Demo</h2>
+    <h2>Start Optimizing Your Finances Today</h2>
 
-    <div class="demo">
-        <input id="income" placeholder="Income">
-        <input id="expenses" placeholder="Expenses">
-        <input id="invest" placeholder="Investing"><br>
-
-        <button onclick="updateChart()">Analyze</button>
-
-        <h3 id="result"></h3>
-        <canvas id="chart"></canvas>
-    </div>
+    <button onclick="window.location.href='dashboard.html'">
+        Try the AI Dashboard
+    </button>
 </div>
 
-</div>
-
-<!-- DASHBOARD -->
-<div id="dashboard" class="hidden">
-
-<div class="section">
-    <h2 id="welcome">Welcome</h2>
-
-    <input id="nameInput" placeholder="Enter your name">
-    <button onclick="setName()">Save</button>
-
-    <div class="card">
-        <h3>Net Worth</h3>
-        <p>$52,400</p>
-    </div>
-
-    <div class="card">
-        <h3>Financial Breakdown</h3>
-        <canvas id="dashChart"></canvas>
-    </div>
-
-    <div class="card">
-        <h3>AI Insights</h3>
-        <p>Increase savings by 10% and reduce discretionary spending.</p>
-    </div>
-</div>
-
-</div>
-
-<footer>© 2026 FlowFund</footer>
-
-<script>
-let chart, dashChart;
-
-function showPage(page) {
-    document.getElementById('home').style.display = page === 'home' ? 'block' : 'none';
-    document.getElementById('dashboard').style.display = page === 'dashboard' ? 'block' : 'none';
-}
-
-function toggleDark() {
-    document.body.classList.toggle("dark");
-}
-
-function updateChart() {
-    let income = parseFloat(document.getElementById("income").value);
-    let expenses = parseFloat(document.getElementById("expenses").value);
-    let invest = parseFloat(document.getElementById("invest").value);
-
-    let savings = income - expenses - invest;
-
-    document.getElementById("result").innerText =
-        savings >= 0 ? "Savings $" + savings : "Overspending $" + Math.abs(savings);
-
-    if (chart) chart.destroy();
-
-    chart = new Chart(document.getElementById('chart'), {
-        type: 'doughnut',
-        data: {
-            labels: ['Spending', 'Savings', 'Investing'],
-            datasets: [{
-                data: [expenses, savings > 0 ? savings : 0, invest]
-            }]
-        }
-    });
-}
-
-function setName() {
-    let name = document.getElementById("nameInput").value;
-    document.getElementById("welcome").innerText = "Welcome, " + name;
-
-    if (dashChart) dashChart.destroy();
-
-    dashChart = new Chart(document.getElementById('dashChart'), {
-        type: 'bar',
-        data: {
-            labels: ['Spending', 'Savings', 'Investing'],
-            datasets: [{
-                data: [1200, 900, 600]
-            }]
-        }
-    });
-}
-</script>
+<footer>
+    © 2026 FlowFund
+</footer>
 
 </body>
 </html>
