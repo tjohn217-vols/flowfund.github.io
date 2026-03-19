@@ -1,43 +1,312 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Insights | FlowFund</title>
+
 <style>
-body {font-family: Arial; background:#f8fafc;}
-.section {max-width:900px; margin:auto; padding:40px;}
-.card {background:white; padding:20px; margin:15px 0; border-radius:10px;}
-nav {background:#0a2540; color:white; padding:15px;}
-nav a {color:white; margin-right:20px;}
+:root {
+    --primary: #0a2540;
+    --accent: #00d4ff;
+    --bg: #f8fafc;
+    --text: #0f172a;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* NAVBAR */
+nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 37, 64, 0.95);
+    padding: 15px 40px;
+    color: white;
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+nav a:hover {
+    opacity: 1;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #0a2540, #1e3a8a);
+    color: white;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    opacity: 0.9;
+}
+
+/* SECTION */
+.section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 80px 20px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+/* EXAMPLE BOX */
+.example {
+    background: #f1f5f9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* CTA */
+.cta {
+    text-align: center;
+    background: linear-gradient(135deg, #1e3a8a, #0a2540);
+    color: white;
+    padding: 60px 20px;
+    border-radius: 20px;
+}
+
+/* BUTTON */
+button {
+    padding: 14px 24px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: var(--primary);
+    color: white;
+    margin-top: 60px;
+}
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <nav>
-<a href="index.html">Home</a>
-<a href="dashboard.html">Dashboard</a>
+    <h2>FlowFund</h2>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="features.html">Features</a>
+        <a href="ai-insights.html">AI Insights</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+    </div>
 </nav>
 
+<!-- HERO -->
+<div class="hero">
+    <h1>AI-Powered Financial Insights</h1>
+    <p>
+        FlowFund doesn’t just track your finances—it understands them.
+        Our AI continuously analyzes your behavior to deliver real-time,
+        personalized insights that help you make smarter financial decisions.
+    </p>
+</div>
+
+<!-- OVERVIEW -->
 <div class="section">
-<h1>AI-Powered Insights</h1>
+    <h2>How AI Insights Work</h2>
 
-<div class="card">
-<p>⚠️ You are spending 18% more than optimal on discretionary categories.</p>
+    <p style="max-width:700px; margin:auto; text-align:center;">
+        FlowFund uses your financial data—income, spending, saving, and investing patterns—
+        to detect trends, identify risks, and uncover opportunities. These insights are
+        delivered automatically, helping you improve your financial health without needing
+        to constantly analyze your data yourself.
+    </p>
 </div>
 
-<div class="card">
-<p>📈 Increasing your investments by $200/month could grow your net worth by $50,000 in 5 years.</p>
+<!-- INSIGHT TYPES -->
+<div class="section">
+    <h2>Types of AI Insights</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Spending Alerts</h3>
+            <p>
+                FlowFund detects when your spending exceeds healthy thresholds
+                based on your income and historical behavior.
+            </p>
+
+            <div class="example">
+                Example: “Your dining expenses are 35% higher than usual this month.”
+            </div>
+
+            <p>
+                <strong>Triggered when:</strong> Spending spikes, category overuse,
+                or deviation from normal habits.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Savings Optimization</h3>
+            <p>
+                The AI identifies opportunities to increase your savings rate
+                without significantly impacting your lifestyle.
+            </p>
+
+            <div class="example">
+                Example: “You can save an extra $200/month by adjusting discretionary spending.”
+            </div>
+
+            <p>
+                <strong>Triggered when:</strong> Savings fall below recommended levels
+                or excess income is detected.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Investment Suggestions</h3>
+            <p>
+                FlowFund analyzes your current financial position and suggests
+                optimal investment allocations to improve long-term growth.
+            </p>
+
+            <div class="example">
+                Example: “Consider increasing your investment contribution by 5%.”
+            </div>
+
+            <p>
+                <strong>Triggered when:</strong> Under-investing or excess cash accumulation.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Risk Detection</h3>
+            <p>
+                The system identifies financial risks such as overspending,
+                low savings buffers, or unstable cash flow patterns.
+            </p>
+
+            <div class="example">
+                Example: “Your expenses exceed 70% of your income—this may reduce financial stability.”
+            </div>
+
+            <p>
+                <strong>Triggered when:</strong> Financial stress indicators increase.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Forecast Warnings</h3>
+            <p>
+                FlowFund predicts future financial outcomes and warns you
+                before potential issues arise.
+            </p>
+
+            <div class="example">
+                Example: “At your current rate, your savings will decrease over the next 3 months.”
+            </div>
+
+            <p>
+                <strong>Triggered when:</strong> Negative financial trends are detected.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Behavioral Insights</h3>
+            <p>
+                The AI uncovers patterns in your financial behavior that may
+                be impacting your long-term financial growth.
+            </p>
+
+            <div class="example">
+                Example: “You tend to overspend on weekends compared to weekdays.”
+            </div>
+
+            <p>
+                <strong>Triggered when:</strong> Recurring behavioral patterns are identified.
+            </p>
+        </div>
+
+    </div>
 </div>
 
-<div class="card">
-<p>💡 Your savings rate is below recommended levels for long-term stability.</p>
+<!-- WHY IT MATTERS -->
+<div class="section">
+    <h2>Why This Matters</h2>
+
+    <p style="max-width:700px; margin:auto; text-align:center;">
+        Most people don’t struggle with access to financial data—they struggle with
+        understanding what to do with it. FlowFund bridges that gap by transforming
+        raw data into clear, actionable insights that guide your financial decisions
+        in real time.
+    </p>
 </div>
 
-<div class="card">
-<p>✅ Users who follow FlowFund insights improve savings by 32% on average.</p>
+<!-- CTA -->
+<div class="section">
+    <div class="cta">
+        <h2>See Your AI Insights in Action</h2>
+        <p>Experience how FlowFund transforms your financial data into smart decisions.</p>
+
+        <button onclick="window.location.href='dashboard.html'">
+            Go to Dashboard
+        </button>
+    </div>
 </div>
 
-</div>
+<footer>
+    © 2026 FlowFund
+</footer>
 
 </body>
 </html>
