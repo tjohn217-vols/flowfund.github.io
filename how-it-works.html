@@ -15,141 +15,86 @@
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
 }
 
-/* NAVBAR */
+/* NAV */
 nav {
-    position: sticky;
-    top: 0;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background: rgba(10, 37, 64, 0.95);
-    padding: 15px 40px;
+    padding: 15px 30px;
+    background: var(--primary);
     color: white;
 }
 
 nav a {
     color: white;
-    margin-left: 20px;
     text-decoration: none;
-    font-size: 14px;
-    opacity: 0.85;
-}
-
-nav a:hover {
-    opacity: 1;
+    margin-left: 20px;
 }
 
 /* HERO */
 .hero {
     text-align: center;
-    padding: 100px 20px;
+    padding: 60px 20px;
     background: linear-gradient(135deg, #0a2540, #1e3a8a);
     color: white;
 }
 
-.hero h1 {
-    font-size: 48px;
+/* SECTION */
+.section {
+    max-width: 1000px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     margin-bottom: 15px;
 }
 
-.hero p {
-    max-width: 700px;
-    margin: auto;
-    opacity: 0.9;
-}
-
-/* SECTION */
-.section {
-    max-width: 1100px;
-    margin: auto;
-    padding: 80px 20px;
-}
-
-.section h2 {
+/* FLOW */
+.flow {
+    display: flex;
+    justify-content: space-between;
     text-align: center;
-    margin-bottom: 50px;
-}
-
-/* STEPS */
-.steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.step {
-    background: white;
-    padding: 30px;
-    border-radius: 14px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-    transition: 0.3s;
-}
-
-.step:hover {
-    transform: translateY(-5px);
-}
-
-.step h3 {
-    margin-top: 0;
-}
-
-/* PROCESS FLOW */
-.process {
-    max-width: 800px;
-    margin: auto;
-    text-align: center;
-}
-
-/* CTA */
-.cta {
-    text-align: center;
-    background: linear-gradient(135deg, #1e3a8a, #0a2540);
-    color: white;
-    padding: 60px 20px;
-    border-radius: 20px;
-}
-
-/* BUTTON */
-button {
-    padding: 14px 24px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #00d4ff, #0099cc);
-    cursor: pointer;
-    font-weight: bold;
+    margin-top: 30px;
 }
 
 /* FOOTER */
 footer {
     text-align: center;
-    padding: 30px;
+    padding: 20px;
     background: var(--primary);
     color: white;
-    margin-top: 60px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav>
     <h2>FlowFund</h2>
     <div>
         <a href="index.html">Home</a>
         <a href="dashboard.html">Dashboard</a>
         <a href="how-it-works.html">How It Works</a>
-        <a href="features.html">Features</a>
-        <a href="ai-insights.html">AI Insights</a>
         <a href="pricing.html">Pricing</a>
         <a href="about.html">About</a>
-        <a href="security.html">Security</a>
     </div>
 </nav>
 
@@ -157,105 +102,99 @@ footer {
 <div class="hero">
     <h1>How FlowFund Works</h1>
     <p>
-        FlowFund acts as your personal financial autopilot—continuously analyzing,
-        optimizing, and improving your financial decisions in real time.
+        A real-time AI engine that continuously optimizes your financial life.
     </p>
-
-    <button onclick="window.location.href='dashboard.html'">
-        Launch Dashboard
-    </button>
 </div>
 
-<!-- STEPS -->
+<!-- PROCESS -->
 <div class="section">
-    <h2>Step-by-Step</h2>
+    <h2 style="text-align:center;">The FlowFund Engine</h2>
 
-    <div class="steps">
+    <div class="flow">
+        <div>💰 Input</div>
+        <div>➡</div>
+        <div>📊 Analyze</div>
+        <div>➡</div>
+        <div>⚙ Optimize</div>
+        <div>➡</div>
+        <div>📈 Grow</div>
+    </div>
 
-        <div class="step">
-            <h3>1. Connect Your Accounts</h3>
-            <p>
-                Securely link your bank accounts, credit cards, and financial data.
-                FlowFund aggregates everything into one unified dashboard.
-            </p>
-        </div>
+    <div class="card">
+        <h3>1. Input Your Financial Data</h3>
+        <p>Enter income, expenses, investments, and net worth.</p>
+    </div>
 
-        <div class="step">
-            <h3>2. Analyze Your Behavior</h3>
-            <p>
-                Our AI studies your income, spending habits, and financial patterns
-                to understand how your money flows over time.
-            </p>
-        </div>
+    <div class="card">
+        <h3>2. AI Analysis</h3>
+        <p>FlowFund evaluates your behavior and financial patterns.</p>
+    </div>
 
-        <div class="step">
-            <h3>3. Optimize in Real Time</h3>
-            <p>
-                FlowFund automatically adjusts your budget, savings, and allocations
-                based on your current financial situation.
-            </p>
-        </div>
+    <div class="card">
+        <h3>3. Optimization Engine</h3>
+        <p>Automatically reallocates money toward savings and growth.</p>
+    </div>
 
-        <div class="step">
-            <h3>4. Predict Your Future</h3>
-            <p>
-                Get forward-looking insights with projections that show where your
-                finances are heading over the next 12 months.
-            </p>
-        </div>
-
-        <div class="step">
-            <h3>5. Simulate Scenarios</h3>
-            <p>
-                Test “what-if” situations like income changes, large purchases,
-                or savings goals—and see the impact instantly.
-            </p>
-        </div>
-
-        <div class="step">
-            <h3>6. Improve Automatically</h3>
-            <p>
-                FlowFund continuously learns and adapts, helping you make better
-                financial decisions without constant manual effort.
-            </p>
-        </div>
-
+    <div class="card">
+        <h3>4. Continuous Adaptation</h3>
+        <p>Your financial plan evolves as your life changes.</p>
     </div>
 </div>
 
-<!-- PROCESS EXPLANATION -->
+<!-- FEATURES -->
 <div class="section">
-    <h2>Your Financial Engine</h2>
+    <h2 style="text-align:center;">Core Features</h2>
 
-    <div class="process">
-        <p>
-            Unlike traditional budgeting apps, FlowFund doesn’t rely on static plans.
-            It functions as a dynamic system that continuously updates based on real-world behavior.
-        </p>
+    <div class="grid">
+        <div class="card">
+            <h3>Smart Budgeting</h3>
+            <p>Automatically adjusts spending categories in real time.</p>
+        </div>
 
-        <p>
-            As your income, spending, and goals evolve, FlowFund recalculates the
-            optimal allocation of your money—balancing spending, saving, and investing
-            to maximize long-term financial health.
-        </p>
+        <div class="card">
+            <h3>Predictive Forecasting</h3>
+            <p>Visualize your financial future with projections.</p>
+        </div>
 
-        <p>
-            This creates a fully adaptive financial system that works in the background,
-            allowing you to focus on your life while your money is optimized automatically.
-        </p>
+        <div class="card">
+            <h3>Scenario Testing</h3>
+            <p>Simulate income and spending changes instantly.</p>
+        </div>
+
+        <div class="card">
+            <h3>Financial Health Score</h3>
+            <p>Get a clear snapshot of your financial strength.</p>
+        </div>
+    </div>
+</div>
+
+<!-- AI INSIGHTS -->
+<div class="section">
+    <h2 style="text-align:center;">AI-Powered Insights</h2>
+
+    <div class="card">
+        <p>⚠️ You are spending more than optimal on discretionary categories.</p>
+    </div>
+
+    <div class="card">
+        <p>📈 Increasing your investments could significantly grow your net worth over time.</p>
+    </div>
+
+    <div class="card">
+        <p>💡 Your savings rate is below recommended levels.</p>
+    </div>
+
+    <div class="card">
+        <p>✅ Users who follow FlowFund insights improve savings significantly.</p>
     </div>
 </div>
 
 <!-- CTA -->
-<div class="section">
-    <div class="cta">
-        <h2>Start Your Financial Autopilot</h2>
-        <p>See how FlowFund transforms your finances in real time.</p>
-
-        <button onclick="window.location.href='dashboard.html'">
-            Go to Dashboard
-        </button>
-    </div>
+<div class="section" style="text-align:center;">
+    <h2>See It In Action</h2>
+    <button onclick="window.location.href='dashboard.html'" style="padding:12px 20px; background:#00d4ff; border:none;">
+        Launch Dashboard
+    </button>
 </div>
 
 <footer>
