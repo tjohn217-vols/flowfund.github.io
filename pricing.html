@@ -1,50 +1,237 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pricing | FlowFund</title>
+
 <style>
-body {font-family: Arial; background:#f8fafc;}
-.grid {display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; padding:40px;}
-.card {background:white; padding:20px; border-radius:10px; text-align:center;}
-nav {background:#0a2540; color:white; padding:15px;}
-nav a {color:white; margin-right:20px;}
-button {padding:10px; background:#00d4ff; border:none;}
+:root {
+    --primary: #0a2540;
+    --accent: #00d4ff;
+    --bg: #f8fafc;
+    --text: #0f172a;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* NAVBAR */
+nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 37, 64, 0.95);
+    padding: 15px 40px;
+    color: white;
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+nav a:hover {
+    opacity: 1;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #0a2540, #1e3a8a);
+    color: white;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: auto;
+    opacity: 0.9;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    text-align: left;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* FEATURED PLAN */
+.featured {
+    border: 2px solid var(--accent);
+    transform: scale(1.03);
+}
+
+/* PRICE */
+.price {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+/* LIST */
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: var(--primary);
+    color: white;
+    margin-top: 40px;
+}
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <nav>
-<a href="index.html">Home</a>
-<a href="dashboard.html">Dashboard</a>
+    <h2>FlowFund</h2>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="features.html">Features</a>
+        <a href="ai-insights.html">AI Insights</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+    </div>
 </nav>
 
-<h1 style="text-align:center;">Pricing</h1>
+<!-- HERO -->
+<div class="hero">
+    <h1>Simple, Transparent Pricing</h1>
+    <p>
+        Start free and upgrade as your financial needs grow.
+        FlowFund scales with you—from basic tracking to full automation.
+    </p>
+</div>
 
+<!-- PRICING GRID -->
 <div class="grid">
 
-<div class="card">
-<h2>Free</h2>
-<p>$0/month</p>
-<p>Basic budgeting tools</p>
-<button>Get Started</button>
+    <!-- FREE -->
+    <div class="card">
+        <h2>Starter</h2>
+        <p class="price">$0/month</p>
+        <p>Best for getting control of your finances.</p>
+
+        <ul>
+            <li>Basic budgeting tools</li>
+            <li>Manual expense tracking</li>
+            <li>Monthly financial summaries</li>
+            <li>Basic financial health score</li>
+        </ul>
+
+        <button onclick="window.location.href='dashboard.html'">
+            Get Started
+        </button>
+    </div>
+
+    <!-- PRO -->
+    <div class="card featured">
+        <h2>Pro</h2>
+        <p class="price">$9/month</p>
+        <p>Smart automation for everyday financial decisions.</p>
+
+        <ul>
+            <li>AI-powered budget optimization</li>
+            <li>Real-time spending adjustments</li>
+            <li>12-month financial forecasting</li>
+            <li>Scenario simulation tools</li>
+            <li>Advanced financial health score</li>
+        </ul>
+
+        <button onclick="window.location.href='dashboard.html'">
+            Upgrade to Pro
+        </button>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="card">
+        <h2>Premium</h2>
+        <p class="price">$19/month</p>
+        <p>Full financial autopilot for maximizing wealth.</p>
+
+        <ul>
+            <li>Everything in Pro</li>
+            <li>Automated investing recommendations</li>
+            <li>Dynamic portfolio optimization</li>
+            <li>Advanced AI alerts + insights</li>
+            <li>Priority support</li>
+        </ul>
+
+        <button onclick="window.location.href='dashboard.html'">
+            Go Premium
+        </button>
+    </div>
+
 </div>
 
-<div class="card">
-<h2>Pro</h2>
-<p>$9/month</p>
-<p>AI insights + projections</p>
-<button>Upgrade</button>
+<!-- VALUE SECTION -->
+<div style="max-width:700px; margin:40px auto; text-align:center;">
+    <h2>Why FlowFund?</h2>
+    <p>
+        Most financial tools are static—they require constant manual updates.
+        FlowFund adapts in real time, helping you optimize spending, saving,
+        and investing automatically so your money works smarter without extra effort.
+    </p>
 </div>
 
-<div class="card">
-<h2>Premium</h2>
-<p>$19/month</p>
-<p>Full financial automation</p>
-<button>Go Premium</button>
-</div>
-
-</div>
+<footer>
+    © 2026 FlowFund
+</footer>
 
 </body>
 </html>
