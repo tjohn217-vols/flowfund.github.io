@@ -24,17 +24,20 @@ body.dark {
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: var(--bg);
     color: var(--text);
 }
 
 /* NAV */
 nav {
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: space-between;
-    padding: 20px;
-    background: var(--primary);
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(10, 37, 64, 0.95);
     color: white;
 }
 
@@ -43,7 +46,10 @@ nav a, nav span {
     margin-left: 20px;
     cursor: pointer;
     text-decoration: none;
+    opacity: 0.85;
 }
+
+nav a:hover { opacity: 1; }
 
 /* SECTION */
 .section {
@@ -52,10 +58,26 @@ nav a, nav span {
     margin: auto;
 }
 
+/* SUMMARY CARDS */
+.summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.summary-card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
 /* GRID */
 .grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
 
@@ -64,7 +86,7 @@ nav a, nav span {
     background: var(--card);
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
 /* INPUTS */
@@ -85,9 +107,7 @@ button {
 }
 
 /* SLIDER */
-.slider {
-    width: 100%;
-}
+.slider { width: 100%; }
 
 /* NOTIFICATIONS */
 #notifications {
@@ -102,24 +122,31 @@ button {
     padding: 10px;
     margin-top: 10px;
     border-radius: 6px;
-    animation: fadein 0.5s;
 }
 
-@keyframes fadein {
-    from {opacity: 0; transform: translateY(-10px);}
-    to {opacity: 1;}
+/* CANVAS SIZE FIX */
+canvas {
+    max-height: 250px;
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <nav>
-<h2>FlowFund Dashboard</h2>
-<div>
-<a href="index.html">Home</a>
-<span onclick="toggleDark()">🌙</span>
-</div>
+    <h2>FlowFund</h2>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="features.html">Features</a>
+        <a href="ai-insights.html">AI Insights</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="security.html">Security</a>
+        <span onclick="toggleDark()">🌙</span>
+    </div>
 </nav>
 
 <div id="notifications"></div>
@@ -143,7 +170,27 @@ button {
 <p id="sliderValue">$3000</p>
 
 <button onclick="runDashboard()">Run AI Analysis</button>
-<button onclick="resetDashboard()">Back to Dashboard</button>
+<button onclick="resetDashboard()">Reset</button>
+
+<!-- SUMMARY -->
+<div class="summary">
+    <div class="summary-card">
+        <h4>Income</h4>
+        <p id="sumIncome">$0</p>
+    </div>
+    <div class="summary-card">
+        <h4>Expenses</h4>
+        <p id="sumExpenses">$0</p>
+    </div>
+    <div class="summary-card">
+        <h4>Savings</h4>
+        <p id="sumSavings">$0</p>
+    </div>
+    <div class="summary-card">
+        <h4>Score</h4>
+        <p id="sumScore">--</p>
+    </div>
+</div>
 
 <div class="grid">
 
@@ -199,7 +246,6 @@ let div = document.createElement("div");
 div.className = "notification";
 div.innerText = text;
 document.getElementById("notifications").appendChild(div);
-
 setTimeout(()=>div.remove(), 4000);
 }
 
@@ -213,38 +259,40 @@ let networth = parseFloat(document.getElementById("networth").value)||0;
 
 let savings = income - expenses - invest;
 
-// CHART
+// SUMMARY UPDATE
+document.getElementById("sumIncome").innerText = "$" + income;
+document.getElementById("sumExpenses").innerText = "$" + expenses;
+document.getElementById("sumSavings").innerText = "$" + savings;
+
+// CHART COLORS
+let textColor = getComputedStyle(document.body).getPropertyValue('--text');
+
+// DOUGHNUT CHART
 if(mainChart) mainChart.destroy();
 
 mainChart = new Chart(document.getElementById("mainChart"),{
 type:"doughnut",
 data:{
 labels:["Expenses","Savings","Investing"],
-datasets:[{data:[expenses, savings>0?savings:0, invest]}]
+datasets:[{
+data:[expenses, savings>0?savings:0, invest],
+backgroundColor:["#ef4444","#22c55e","#3b82f6"]
+}]
+},
+options:{
+plugins:{
+legend:{labels:{color:textColor}}
+}
 }
 });
 
 // AI INSIGHTS
 let insights=[];
-
-if(expenses > income*0.7){
-insights.push("⚠️ Spending too high.");
-addNotification("⚠️ AI Alert: High spending detected");
-}
-if(savings < income*0.2){
-insights.push("📉 Savings too low.");
-}
-if(invest < income*0.1){
-insights.push("📈 Increase investing.");
-}
-if(networth < income*6){
-insights.push("💡 Build assets.");
-}
-
-if(insights.length===0){
-insights.push("✅ Strong financial health.");
-addNotification("✅ AI: You're doing great!");
-}
+if(expenses > income*0.7) insights.push("⚠️ Spending too high.");
+if(savings < income*0.2) insights.push("📉 Savings too low.");
+if(invest < income*0.1) insights.push("📈 Increase investing.");
+if(networth < income*6) insights.push("💡 Build assets.");
+if(insights.length===0) insights.push("✅ Strong financial health.");
 
 document.getElementById("insights").innerText = insights.join(" ");
 
@@ -256,8 +304,9 @@ if(invest < income*0.1) score -= 25;
 if(networth < income*6) score -= 25;
 
 document.getElementById("score").innerText = score + "/100";
+document.getElementById("sumScore").innerText = score + "/100";
 
-// PROJECTIONS
+// PROJECTION CHART
 let months=[], values=[], current=networth;
 
 for(let i=1;i<=12;i++){
@@ -272,23 +321,31 @@ projectionChart = new Chart(document.getElementById("projectionChart"),{
 type:"line",
 data:{
 labels:months,
-datasets:[{label:"Net Worth Projection", data:values}]
+datasets:[{
+label:"Net Worth Projection",
+data:values,
+borderColor:"#00d4ff",
+tension:0.3,
+fill:false
+}]
+},
+options:{
+plugins:{
+legend:{labels:{color:textColor}}
+},
+scales:{
+x:{ticks:{color:textColor}},
+y:{ticks:{color:textColor}}
+}
 }
 });
 
-// RANDOM NOTIFICATIONS
-setTimeout(()=>addNotification("💡 AI Tip: Try increasing savings by 5%"),2000);
+addNotification("📊 Dashboard updated!");
 }
 
-// RESET BUTTON
+// RESET
 function resetDashboard(){
-document.getElementById("income").value="";
-document.getElementById("expenses").value="";
-document.getElementById("invest").value="";
-document.getElementById("networth").value="";
-document.getElementById("insights").innerText="Dashboard reset.";
-document.getElementById("score").innerText="--";
-addNotification("🔄 Dashboard reset");
+location.reload();
 }
 </script>
 
